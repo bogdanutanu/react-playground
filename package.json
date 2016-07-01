@@ -1,0 +1,54 @@
+{
+  "name": "react-bundle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && npm run build:dist",
+    "build:dist": "NODE_ENV=production node node_modules/webpack/bin/webpack.js -p --config webpack.config.js",
+    "clean": "rm -rf public/bundle.js*",
+    "clean:coverage": "rm -rf coverage",
+    "coverage": "npm run clean:coverage && npm run test:cover",
+    "test": "NODE_ENV=lib mocha --opts conf/mocha.opts",
+    "test:cover": "NODE_ENV=lib nyc --reporter=lcov --reporter=text mocha --opts conf/mocha.opts",
+    "lint": "eslint src/**/*.js test/**/*.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^6.1.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-2": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "enzyme": "^2.3.0",
+    "eslint": "^2.13.1",
+    "eslint-plugin-react": "^5.2.2",
+    "expect": "^1.20.1",
+    "mocha": "^2.5.3",
+    "node-libs-browser": "^1.0.0",
+    "nyc": "^6.6.1",
+    "webpack": "^1.13.1"
+  },
+  "nyc": {
+    "exclude": [
+      "src/api",
+      "src/constants",
+      "src/style",
+      "src/containers",
+      "src/**/*Constants.js",
+      "src/**/Styles.js",
+      "conf",
+      "test"
+    ]
+  }
+}

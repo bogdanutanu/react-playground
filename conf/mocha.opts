@@ -1,0 +1,4 @@
+--require conf/dom.js
+--require babel-register
+--require conf/null-compiler
+test/**/*-test.js
