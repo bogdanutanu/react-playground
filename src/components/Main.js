@@ -33,7 +33,7 @@ class LikeButton extends React.Component {
   }
 }
 
-var TransactionBox + React.createClass({
+var TransactionBox = React.createClass({
   handleTransactionSubmit: function(transaction) {
     newTransactions = transactions.concat([transaction]);
     newBalance = balance + transaction.amount;
@@ -50,6 +50,22 @@ var TransactionBox + React.createClass({
       </div>
     );
   }
+});
+
+var TransactionsList = React.createClass({
+  render: function() {
+    var transactionNodes = this.props.data.map(function(transaction) {
+    return (
+      <Transaction description={transaction.description} amount={transaction.amount}>
+      </Transaction>
+    );
+    });
+    return (
+      <div className="transactionList">
+        {}
+      </div>
+    );
+  }  
 });
 
 setInterval(function() {
