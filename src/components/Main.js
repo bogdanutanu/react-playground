@@ -58,7 +58,10 @@ var TransactionsList = React.createClass({
   render: function() {
     var transactionNodes = this.props.data.map(function(transaction) {
     return (
-      <Transaction description={transaction.description} amount={transaction.amount}>
+      <Transaction 
+        description={transaction.description} 
+        amount={transaction.amount}
+        key={transaction.id}>
       </Transaction>
     );
     });
@@ -73,6 +76,7 @@ var TransactionsList = React.createClass({
 
 var TransactionBox = React.createClass({
   handleTransactionSubmit: function(transaction) {
+    transaction.id = Date.now();
     var transactions = this.state.transactions;
     var newTransactions = transactions.concat([transaction]);
 
